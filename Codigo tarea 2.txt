@@ -1,0 +1,69 @@
+package calculadora;
+
+import java.util.Scanner;
+        
+public class Calculadora {
+    static double seno =0,x,coseno=0,tangente;
+    static int n=100;
+    public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Ingrese un numero para calcular el seno, coseno y tangente");
+        x = reader.nextDouble();
+       calculoSeno(); 
+       calculoCoseno();
+       calculoTangente();
+        
+    }
+    
+    static void calculoSeno(){
+        double numerador,denominador,signo;
+        
+        for(int i = 0; i <= n; i++){
+            numerador = 1;
+            for(int j = 0; j < 2*i+1; j++){
+                numerador = numerador * x;
+            }
+            denominador = 1;
+            for(int c = 1; c <= 2*i+1; c++){
+                denominador = denominador *c;
+            }
+            if(i%2==0){
+                signo=1;
+            }
+            else{
+                signo=-1;
+            }
+            seno = seno +(numerador/denominador)*signo;
+        }
+        System.out.println("el valor de seno del numero "+x+" es "+seno);
+    }
+    
+    static void calculoCoseno(){
+        double numerador,denominador,signo;
+        
+        for(int i = 0; i <= n; i++){
+            numerador=1;
+            for(int j = 0; j < 2*i; j++){
+                numerador = numerador*x;
+            }
+            denominador=1;
+            for(int w=1; w<=2*i; w++){
+                denominador = denominador*w;
+            }
+            if(i%2==0){
+                signo=1;
+            }
+            else{
+                signo=-1;
+            }
+            coseno = coseno +(numerador/denominador)*signo;
+        }
+        System.out.println("El coseno de el numero "+x+" es "+coseno);
+    }
+    
+    static void calculoTangente(){
+        tangente = seno/coseno;
+        System.out.println("La tangente del numero "+x+" es "+tangente);
+}
+    
+    
